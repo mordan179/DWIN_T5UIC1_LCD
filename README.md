@@ -1,6 +1,6 @@
 # DWIN_T5UIC1_LCD
 
-## Python class for the Ender 3 V2 LCD runing klipper3d with Moonraker installed with Kiauh
+## Python class for the Ender 3 V2/Max Neo LCD runing klipper3d with Moonraker installed with Kiauh
 
 https://www.klipper3d.org
 
@@ -27,13 +27,11 @@ https://github.com/arksine/moonraker
     
     dtoverlay=disable-bt
 
-### [Enabling Klipper's API socket](https://www.klipper3d.org/API_Server.html)
-  By default, the Klipper's API socket is not enabled. In order to use the API server, the file /etc/default/klipper need to be updated form
+### [Confirm Klipper's API socket is active](https://www.klipper3d.org/API_Server.html)
+  
+  check /home/pi/printer_data/systemd/klipper.env for:
 
-    KLIPPY_ARGS="/home/pi/klipper/klippy/klippy.py /home/pi/printer.cfg -l /tmp/klippy.log"
-To:
-
-    KLIPPY_ARGS="/home/pi/klipper/klippy/klippy.py /home/pi/printer.cfg -a /tmp/klippy_uds -l /tmp/klippy.log"
+    KLIPPY_ARGS="/home/pi/klipper/klippy/klippy.py /home/pi/printer_data/config/printer.cfg -I /home/pi/printer_data/comms/klippy.serial -l /home/pi/printer_data/logs/klippy.log -a /home/pi/printer_data/comms/klippy.sock"
 
 ### Library requirements 
 
@@ -74,7 +72,7 @@ I tried to take some images to help out with this: You don't have to use the col
 Enter the downloaded DWIN_T5UIC1_LCD folder.
 Make new file run.py and copy/paste in the following (pick one)
 
-For an Ender3v2
+For an Ender3v2 (also tested on Ender 3 Max Neo)
 ```python
 #!/usr/bin/env python3
 from dwinlcd import DWIN_LCD
@@ -119,6 +117,8 @@ Run with `python3 ./run.py`
 	path of `run.py` is expected to be `/home/pi/DWIN_T5UIC1_LCD/run.py`
 
    `sudo chmod +x run.py`
+   
+   `sudo chmod +x run.sh`
    
    `sudo chmod +x simpleLCD.service`
    
