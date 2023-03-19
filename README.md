@@ -11,6 +11,12 @@ https://github.com/arksine/moonraker
 
 ## Setup:
 
+This fork assumes your username is `pi`
+Please note that any references to `pi` below will be replaced with your username on a clean install
+If you use a different username please make sure to edit the following lines of code to reflect your username:
+  printerInterace.py line 256
+  run.sh line 10
+
 ### [Disable Linux serial console](https://www.raspberrypi.org/documentation/configuration/uart.md)
   By default, the primary UART is assigned to the Linux console. If you wish to use the primary UART for other purposes, you must reconfigure Raspberry Pi OS. This can be done by using raspi-config:
 
